@@ -1,12 +1,15 @@
 FROM php:8.2-apache
 
-# Ativa mod_rewrite (útil se futuramente quiser rotas)
 RUN a2enmod rewrite
 
-# Copia o projeto para o Apache
+ENV APACHE_DOCUMENT_ROOT=/var/www/html
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/*.conf \
+    /etc/apache2/apache2.conf
+
 COPY . /var/www/html
 
-# Permissões
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
