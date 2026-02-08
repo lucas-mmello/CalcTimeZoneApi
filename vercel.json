@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "vercel-php@0.5.2"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/timezones",
+      "dest": "/api/timezones.php"
+    },
+    {
+      "src": "/api/convert",
+      "dest": "/api/convert.php"
+    }
+  ]
+}
