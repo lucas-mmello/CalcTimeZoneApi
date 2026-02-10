@@ -57,7 +57,7 @@ foreach (DateTimeZone::listIdentifiers() as $tzId) {
 
     $timezones[] = [
         'id' => $tzId,
-        'label' => trim("$city, $country ($offsetLabel)"),
+        'label' => $country == '' ? trim("$city, $region ($offsetLabel)") : trim("$city, $country ($offsetLabel)"),
         'region' => $region,
         'city' => $city,
         'country' => $country,
